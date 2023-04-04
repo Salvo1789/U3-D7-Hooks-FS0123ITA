@@ -14,10 +14,10 @@ const CommentArea = (props) => {
   // fetchComments viene chiamato in: componentDidMount, componentDidUpdate e anche dopo la post interna ad AddComment
   const fetchComments = async () => {
     try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin, {
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + props.asin, {
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDJhZThlNTY4MzQzMTAwMTRkZWE3ZWYiLCJpYXQiOjE2ODA1MzM3MzMsImV4cCI6MTY4MTc0MzMzM30.BybWrL_zO0q23jXsrG8pA-yPWXt9QYBf4zZcRNL920U"
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDEzYTIxNmM1NmIzNjAwMTMzZmU1NjMiLCJpYXQiOjE2ODA1MzIwNDgsImV4cCI6MTY4MTc0MTY0OH0.e62TCLuZDwZJwVf8hqJB86E-Xp09cW_yXxxcutaNFYc"
         }
       });
 
@@ -33,7 +33,7 @@ const CommentArea = (props) => {
   return (
     <div>
       <AddComment asin={props.asin} fetchComments={fetchComments} />
-      <CommentsList comments={comments} />
+      <CommentsList comments={comments} fetchComments={fetchComments} />
     </div>
   );
 }
